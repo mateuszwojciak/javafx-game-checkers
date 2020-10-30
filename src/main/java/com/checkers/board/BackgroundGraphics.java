@@ -56,17 +56,17 @@ public class BackgroundGraphics {
 
     private void createBoardLayout() {
         grid = new GridPane();
-        grid.setPadding(new Insets(45,55,45,54));
+        grid.setPadding(new Insets(38,50,38,50));
         grid.setBackground(createBoardBackground());
 
         for(int i = 0; i < 8; i++) {
             ColumnConstraints columnConstraints = new ColumnConstraints();
-            columnConstraints.setPercentWidth(496/8);
+            columnConstraints.setPercentWidth(64);
             columnConstraints.setHalignment(HPos.CENTER);
             grid.getColumnConstraints().add(columnConstraints);
 
             RowConstraints rowConstraints = new RowConstraints();
-            rowConstraints.setPercentHeight(496/8);
+            rowConstraints.setPercentHeight(64);
             rowConstraints.setValignment(VPos.CENTER);
             grid.getRowConstraints().add(rowConstraints);
         }

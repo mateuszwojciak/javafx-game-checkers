@@ -30,14 +30,10 @@ public class Figure {
     }
 
     public enum Type {
-        NORMAL, QUEEN;
+        NORMAL;
 
         public boolean isNormal() {
             return  this == NORMAL;
-        }
-
-        public boolean isQueen() {
-            return this == QUEEN;
         }
     }
 

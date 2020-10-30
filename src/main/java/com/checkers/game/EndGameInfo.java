@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 public class EndGameInfo {
     private Board board;
 
+    ButtonType newGame = new ButtonType("NEW GAME");
+    ButtonType exit = new ButtonType("EXIT");
+
     public EndGameInfo(Board board) {
         this.board = board;
     }
@@ -22,9 +25,6 @@ public class EndGameInfo {
         alert.setHeaderText(null);
         alert.setContentText("White Player Win!"
                 + "\n\nThe last saved game has been removed.");
-
-        ButtonType newGame = new ButtonType("New Game");
-        ButtonType exit = new ButtonType("Exit");
 
         alert.getButtonTypes().setAll(newGame, exit);
 
@@ -45,9 +45,6 @@ public class EndGameInfo {
         alert.setContentText("Black Player Win!" +
                 "\n\nThe last saved game has been removed.");
 
-        ButtonType newGame = new ButtonType("New Game");
-        ButtonType exit = new ButtonType("Exit");
-
         alert.getButtonTypes().setAll(newGame, exit);
 
         if(alert.showAndWait().get() == newGame) {
@@ -66,9 +63,6 @@ public class EndGameInfo {
         alert.setHeaderText(null);
         alert.setContentText("Draw! No one win!"
                 + "\n\nThe last saved game has been removed.");
-
-        ButtonType newGame = new ButtonType("New Game");
-        ButtonType exit = new ButtonType("Exit");
 
         alert.getButtonTypes().setAll(newGame, exit);
 

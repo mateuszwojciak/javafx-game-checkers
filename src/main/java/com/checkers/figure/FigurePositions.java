@@ -1,5 +1,6 @@
 package com.checkers.figure;
 
+
 public class FigurePositions {
     private int column;
     private int row;

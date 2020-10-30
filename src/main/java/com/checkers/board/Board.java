@@ -15,7 +15,6 @@ import com.checkers.moves.NormalKicks;
 import com.checkers.moves.NormalMoves;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Board {
     private Map<FigurePositions, Figure> board = new HashMap<>();
@@ -34,11 +33,9 @@ public class Board {
     private EndGame endGame = new EndGame(this);
     private Ranking ranking = new Ranking();
 
-
     private SaveLoadGame saveLoadGame = new SaveLoadGame(this);
     private SaveGame saveGame = new SaveGame(this);
     private LoadGame loadGame = new LoadGame();
-
 
     private boolean turn = true;
     private boolean isKick = false;
@@ -170,50 +167,6 @@ public class Board {
         }
 
         return null;
-    }
-
-    private void promote() {
-        possiblePromote.clear();
-        calculatePromote(board.keySet());
-
-        for(FigurePositions position : possiblePromote) {
-            Figure figure = getFigure(position);
-
-            if(figure.getFigureColor().isWhite() && figure.getFigureType().isNormal()) {
-                BackgroundGraphics.removeFigure(position);
-                BackgroundGraphics.addFigure(position, new Figure(figure.getFigureColor(), Figure.Type.QUEEN), false);
-
-                promoteOnBoard(position, figure);
-            }
-
-            if(figure.getFigureColor().isBlack() && figure.getFigureType().isNormal()) {
-                BackgroundGraphics.removeFigure(position);
-                BackgroundGraphics.addFigure(position, new Figure(figure.getFigureColor(), Figure.Type.QUEEN), false);
-
-                promoteOnBoard(position, figure);
-            }
-        }
-    }
-
-    public void promoteOnBoard(FigurePositions position, Figure figure) {
-        removeFigureFromBoard(position);
-        addFigureToBoard(position, new Figure(figure.getFigureColor(), Figure.Type.QUEEN));
-    }
-
-    public void calculatePromote(Set<FigurePositions> positions) {
-
-        Set<FigurePositions> whites = positions.stream()
-                .filter(position -> position.getRow() == 0)
-                .filter(position -> getFigure(position).getFigureColor() == Figure.Color.WHITE)
-                .collect(Collectors.toSet());
-
-        Set<FigurePositions> blacks = positions.stream()
-                .filter(position -> position.getRow() == 7)
-                .filter(position -> getFigure(position).getFigureColor() == Figure.Color.BLACK)
-                .collect(Collectors.toSet());
-
-        possiblePromote.addAll(whites);
-        possiblePromote.addAll(blacks);
     }
 
     public void setDifficultyLevel(int difficulty) {
@@ -405,7 +358,6 @@ public class Board {
     private void endKick() {
         pickedPosition = null;
 
-        promote();
         endGame.checkEndGame(getBoard().keySet());
 
         normalKicks.clear();
@@ -415,7 +367,6 @@ public class Board {
     public Ranking getRanking() {
         return ranking;
     }
-
 
     public SaveLoadGame getSaveLoadGame() {
         return saveLoadGame;
@@ -427,10 +378,6 @@ public class Board {
 
     public Computer getComputer() {
         return computer;
-    }
-
-    public Set<FigurePositions> getPossiblePromote() {
-        return possiblePromote;
     }
 
     public Map<FigurePositions, Figure> getBoard() {

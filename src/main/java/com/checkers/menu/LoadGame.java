@@ -12,7 +12,7 @@ public class LoadGame {
         alert.setTitle("Load Game");
         alert.setHeaderText(null);
         alert.setContentText("Are you sure you want load last saving game?" +
-                "\n\nWARINING! If you haven't a saved game, a new board will be loaded!");
+                "\nWARINING! If you haven't a saved game, a new board will be loaded!");
 
         ButtonType yes = new ButtonType("Yes");
         ButtonType no = new ButtonType("No");
@@ -30,8 +30,8 @@ public class LoadGame {
         alert.setTitle("Load Game");
         alert.setHeaderText(null);
         alert.setContentText("The last saved game has been Loaded!" +
-                "\n\nIf you want to play new game, click New Game button in Game Menu." +
-                "\n\nThe last saved game has been removed.");
+                "\nIf you want to play new game, click New Game button in Game Menu." +
+                "\nThe last saved game has been removed.");
 
         alert.showAndWait();
     }

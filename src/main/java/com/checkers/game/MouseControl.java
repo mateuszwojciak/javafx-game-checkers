@@ -17,7 +17,7 @@ public class MouseControl {
 
         @Override
         public void handle(MouseEvent event) {
-            FigurePositions clickPosition = new FigurePositions((int) ((event.getX() - 59) / 62), (int) ((event.getY() - 58) / 62));
+            FigurePositions clickPosition = new FigurePositions((int) ((event.getX() - 59) / 64), (int) ((event.getY() - 58) / 64));
 
             if(!clickPosition.isValidPosition()) {
                 return;

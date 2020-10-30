@@ -19,7 +19,7 @@ public class Checkers extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        Scene scene = new Scene(graphics.getBorderPane(), 700, 700, Color.BLACK);
+        Scene scene = new Scene(graphics.getBorderPane(), 612, 612, Color.BLACK);
         scene.addEventFilter(MouseEvent.MOUSE_CLICKED, mouseControl.getMouseClick());
 
         primaryStage.setScene(scene);
