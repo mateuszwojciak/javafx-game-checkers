@@ -36,7 +36,7 @@ public class FigurePositions {
     @Override
     public int hashCode() {
         int result = column;
-        result = 31 * result + row;
+        result = result + row;
         return result;
     }
 }

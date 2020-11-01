@@ -8,7 +8,9 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SaveLoadGame {private File file = new File("board.list");
+public class SaveLoadGame {
+    private File file = new File("board.list");
+
     private Map<FigurePositions, Figure> loadBoard = new HashMap<>();
     private Board board;
 
