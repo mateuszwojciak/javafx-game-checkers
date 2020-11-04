@@ -19,8 +19,6 @@ import java.util.*;
 public class Board {
     private Map<FigurePositions, Figure> board = new HashMap<>();
 
-    private Set<FigurePositions> possiblePromote = new HashSet<>();
-
     private BlackFigures blackFigures = new BlackFigures();
     private WhiteFigures whiteFigures = new WhiteFigures();
 
@@ -43,13 +41,18 @@ public class Board {
     private FigurePositions pickedPosition;
 
     public Board() {
+        try {
+            if (saveLoadGame.isFileExist()) {
+                saveLoadGame.loadGame();
+                saveLoadGame.removeFile();
+                loadGame.loadInfo();
+            } else {
 
-        if(saveLoadGame.isFileExist()) {
-            saveLoadGame.loadGame();
-            saveLoadGame.removeFile();
-            loadGame.loadInfo();
-        } else {
-
+                putAllFigures();
+            }
+        } catch (Exception e) {
+            System.out.println("Wystąpił błąd: " + e);
+        } finally {
             putAllFigures();
         }
 
@@ -167,10 +170,6 @@ public class Board {
         }
 
         return null;
-    }
-
-    public void setDifficultyLevel(int difficulty) {
-        computer.setDifficultyLevel(difficulty);
     }
 
     public void handleMove(FigurePositions position) {
@@ -347,7 +346,6 @@ public class Board {
     private void endTurn() {
         pickedPosition = null;
 
-        //promote();
         endGame.checkEndGame(getBoard().keySet());
 
         normalMoves.clear();
@@ -390,5 +388,9 @@ public class Board {
 
     protected void setTurn(boolean turn) {
         this.turn = turn;
+    }
+
+    public void setDifficultyLevel(int difficulty) {
+        computer.setDifficultyLevel(difficulty);
     }
 }

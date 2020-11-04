@@ -48,7 +48,7 @@ public class BackgroundGraphics {
     }
 
     private Background createBoardBackground() {
-        BackgroundSize backgroundSize = new BackgroundSize(612,612,false, false, true, false);
+        BackgroundSize backgroundSize = new BackgroundSize(612,612,true, true, true, false);
         BackgroundImage backgroundImage = new BackgroundImage(imageBoard, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         background = new Background(backgroundImage);
         return background;

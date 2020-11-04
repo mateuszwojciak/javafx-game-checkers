@@ -37,32 +37,36 @@ public class NormalMoves {
         }
     }
 
-    public void allPossibleBlackMoves() {
+    public void allPossibleBlackMoves () {
         allPossibleBlack.clear();
 
-        for(Map.Entry<FigurePositions, Figure> blacks : board.getBoard().entrySet()) {
-            if(blacks.getValue().getFigureColor().isWhite()) {
-                continue;
-            }
+        try {
+            for (Map.Entry<FigurePositions, Figure> blacks : board.getBoard().entrySet()) {
+                if (blacks.getValue().getFigureColor().isWhite()) {
+                    continue;
+                }
 
-            possibleMoves.clear();
+                possibleMoves.clear();
 
-            if(blacks.getValue().getFigureType().isNormal()) {
-                normalMoveCalculator(blacks.getKey(), false);
-                for(FigurePositions position : possibleMoves){
-                    if(position != null && position.isValidPosition()) {
-                        allPossibleBlack.add(blacks.getKey());
+                if (blacks.getValue().getFigureType().isNormal()) {
+                    normalMoveCalculator(blacks.getKey(), false);
+                    for (FigurePositions position : possibleMoves) {
+                        if (position != null && position.isValidPosition()) {
+                            allPossibleBlack.add(blacks.getKey());
+                        }
+                    }
+                } else {
+                    normalMoveCalculator(blacks.getKey(), true);
+                    normalMoveCalculator(blacks.getKey(), false);
+                    for (FigurePositions position : possibleMoves) {
+                        if (position != null && position.isValidPosition()) {
+                            allPossibleBlack.add(blacks.getKey());
+                        }
                     }
                 }
-            } else {
-                normalMoveCalculator(blacks.getKey(), true);
-                normalMoveCalculator(blacks.getKey(), false);
-                for(FigurePositions position : possibleMoves){
-                    if(position != null && position.isValidPosition()) {
-                        allPossibleBlack.add(blacks.getKey());
-                    }
-                }
             }
+        } catch (Exception e) {
+            System.out.println("Wystąpił błąd: " + e);
         }
     }
 

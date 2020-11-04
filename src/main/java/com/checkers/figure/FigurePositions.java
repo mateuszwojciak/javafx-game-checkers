@@ -24,13 +24,13 @@ public class FigurePositions {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return  true;
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         FigurePositions that = (FigurePositions) o;
 
         if (column != that.column) return false;
-        return  row == that.row;
+        return row == that.row;
     }
 
     @Override

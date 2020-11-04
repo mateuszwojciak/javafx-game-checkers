@@ -26,10 +26,9 @@ public class Ranking {
     public void showRanking() {
         Alert alert = new Alert(Alert.AlertType.NONE);
         alert.setTitle("Ranking");
-        alert.setContentText("White Player Wins: " + whiteWins +
-                "\nBlack Player Wins: " + blackWins +
-                "\nDraws: " + draws +
-                "\n\nLast game: " + dateLastGame);
+        alert.setContentText("White Wins: " + whiteWins +
+                "\nBlack Wins: " + blackWins +
+                "\nDraws: " + draws);
 
         ButtonType ok = new ButtonType("OK");
         ButtonType clear = new ButtonType("Clear");
